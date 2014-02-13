@@ -17,7 +17,7 @@ Ext.define('Ext.ts.emitter.App', {
             }, {
                 region: 'center',
                 xtype: 'tabpanel',
-                activeTab: 0,
+                activeTab: 0, 
                 items: [
                     {
                         xtype: 'ts.emitter.codepanel',
