@@ -1,4 +1,4 @@
-Ext.define('Ext.ts.emitter.CodePanel', {
+﻿Ext.define('Ext.ts.emitter.CodePanel', {
     extend : 'Ext.panel.Panel', 
     xtype : 'ts.emitter.codepanel',
     layout : { type: 'hbox', align: 'stretch' },
@@ -9,11 +9,6 @@ Ext.define('Ext.ts.emitter.CodePanel', {
 
         Ext.ts.emitter.CodePanel.superclass.initComponent.call(this);
     },
-
-    //afterRender(){
-    //    super.afterRender();
-    //    this.load();
-    //}
     load : function () {
         var _this = this;
         Ext.Ajax.request({

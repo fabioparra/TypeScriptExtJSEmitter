@@ -17,10 +17,6 @@ module Ext.ts.emitter {
             super.initComponent();
             
         }
-        //afterRender(){
-        //    super.afterRender();
-        //    this.load();    
-        //}
         load(){
         
             Ext.Ajax.request({
