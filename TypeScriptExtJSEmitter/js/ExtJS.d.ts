@@ -1,6 +1,6 @@
 
 declare module Ext {
-    
+     export function get(target : string) : any;
      class Base {
     
             
