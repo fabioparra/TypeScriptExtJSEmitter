@@ -20,7 +20,7 @@
                 items: [
                     {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.ts' 
+                        src: 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.txt' 
                     }, {
                         xtype: 'ts.emitter.codepanel', 
                         src: 'js/samples/ExtendDeep.ts'
