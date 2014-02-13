@@ -25,3 +25,7 @@ folder (vary by vs version) C:\Program Files (x86)\Microsoft Visual Studio 12.0\
 
 https://github.com/fabioparra/TypeScriptExtJSEmitter/blob/master/TypeScriptExtJSEmitter/js/compiler/typescriptServices.js
 https://github.com/fabioparra/TypeScriptExtJSEmitter/blob/master/TypeScriptExtJSEmitter/js/compiler/lib.d.ts
+
+#Source Code
+
+https://typescript.codeplex.com/SourceControl/network/forks/fabioparra/ExtJSEmitter
