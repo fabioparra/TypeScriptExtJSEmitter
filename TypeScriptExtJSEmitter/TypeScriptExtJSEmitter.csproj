@@ -17,12 +17,17 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="default.htm" />
+    <Content Include="js\App.js" />
+    <Content Include="js\compiler\typescriptServices.js" />
+    <Content Include="index.html" />
+    <Content Include="js\lib\codemirror\lib\codemirror.css" />
+    <Content Include="js\lib\codemirror\lib\codemirror.js" />
+    <Content Include="js\lib\codemirror\lib\overlay.js" />
+    <Content Include="js\lib\codemirror\mode\javascript\javascript.css" />
+    <Content Include="js\lib\codemirror\mode\javascript\javascript.js" />
+    <Content Include="js\ux\codemirror\form\field\codemirror.js" />
+    <Content Include="js\ux\codemirror\layout\component\CodeMirror.js" />
     <Content Include="web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
@@ -31,6 +36,17 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="js\App.ts" />
+    <TypeScriptCompile Include="js\CodePanel.ts" />
+    <TypeScriptCompile Include="js\ExtJS.d.ts" />
+    <TypeScriptCompile Include="js\samples\Enumerators.ts" />
+    <TypeScriptCompile Include="js\samples\ExportVarNamespace.ts" />
+    <TypeScriptCompile Include="js\samples\ExtendDeep.ts" />
+    <TypeScriptCompile Include="js\samples\LocalVariable.ts" />
+    <TypeScriptCompile Include="js\samples\statics.ts" />
+    <TypeScriptCompile Include="js\samples\SuperClass.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -62,8 +78,9 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
-    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptModuleKind>none</TypeScriptModuleKind>
+    <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES5</TypeScriptTarget>

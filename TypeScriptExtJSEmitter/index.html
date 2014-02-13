@@ -1,15 +1,39 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>TypeScript HTML App</title>
-    <link rel="stylesheet" href="app.css" type="text/css" />
-    <script src="app.js"></script>
+    <title>TypeScript ExtJS emitter</title>
+
+    <link href="http://cdn.sencha.io/ext/gpl/4.2.0/resources/css/ext-all-neptune.css" rel="stylesheet" />
+    <link href="js/lib/codemirror/lib/codemirror.css" rel="stylesheet" />
+    <script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all-debug.js"></script>
+
+    <script src="js/compiler/typescriptServices.js"></script>
+
+    <script src="js/lib/codemirror/lib/codemirror.js"></script>
+    <script src="js/lib/codemirror/mode/javascript/javascript.js"></script>
+
+    
+    <script src="js/ux/codemirror/layout/component/CodeMirror.js"></script>
+    <script src="js/ux/codemirror/form/field/codemirror.js"></script>
+
+
+    <script src="js/CodePanel.js"></script>
+    <script src="js/App.js"></script>
+
+
+    <script type="text/javascript">
+        Ext.onReady(function () {
+
+            Ext.create('Ext.ts.emitter.App', { renderTo: Ext.getBody() });
+
+        });
+    </script>
+
 </head>
 <body>
-    <h1>TypeScript HTML App</h1>
 
-    <div id="content"></div>
+
+
 </body>
 </html>
