@@ -19,7 +19,7 @@ The TypeScript software is based on or incorporates material and code from the p
 (collectively "Third Party Code"). Microsoft is not the original author of the 
 Third Party Code. The original copyright notice and the license, under which 
 Microsoft received such Third Party Code, are set forth below. Such license and 
-notices are provided for informational purposes only. Microsoft licenses the Third 
+notices are provided for informational purposes only. Microsoft licenses the Third  
 Party Code to you under the terms of the Apache 2.0 License.
 All Third Party Code licensed by Microsoft under the Apache License, Version 2.0 (the "License"); you 
 may not use this file except in compliance with the License. You may obtain a copy 
