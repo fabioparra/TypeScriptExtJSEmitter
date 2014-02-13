@@ -16,13 +16,13 @@
             }, {
                 region: 'center',
                 xtype: 'tabpanel',
-                activeTab: 0,
+                activeTab: 0, 
                 items: [
                     {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.ts'
+                        src: 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.ts' 
                     }, {
-                        xtype: 'ts.emitter.codepanel',
+                        xtype: 'ts.emitter.codepanel', 
                         src: 'js/samples/ExtendDeep.ts'
                     }, {
                         xtype: 'ts.emitter.codepanel',
