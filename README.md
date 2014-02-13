@@ -3,6 +3,11 @@ TypeScriptExtJSEmitter
 
 A fork of typescript to emit code in Ext JS class style
 
+#Why?
+
+TypeScript emit code in a particular style and get really ugly when you have deep module names and class inheritance.
+ExtJS, on other hand, has a nice class system style, so why not mix both?
+
 
 #Demo
 
