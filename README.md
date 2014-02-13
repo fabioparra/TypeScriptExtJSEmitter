@@ -34,3 +34,5 @@ https://github.com/fabioparra/TypeScriptExtJSEmitter/blob/master/TypeScriptExtJS
 #Source Code
 
 https://typescript.codeplex.com/SourceControl/network/forks/fabioparra/ExtJSEmitter
+
+obs: Changes made only in TypeScript.Emitter class
