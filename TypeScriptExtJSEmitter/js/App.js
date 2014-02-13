@@ -1,4 +1,4 @@
-﻿Ext.define('Ext.ts.emitter.App', {
+Ext.define('Ext.ts.emitter.App', {
     extend : 'Ext.container.Viewport', 
     layout : 'border',
     initComponent : function () {
@@ -16,23 +16,20 @@
             }, {
                 region: 'center',
                 xtype: 'tabpanel',
-                activeTab: 0, 
+                activeTab: 0,
                 items: [
                     {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.txt' 
-                    }, {
-                        xtype: 'ts.emitter.codepanel', 
-                        src: 'js/samples/ExtendDeep.ts'
+                        src: 'Classes'
                     }, {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'js/samples/ExportVarNamespace.ts'
+                        src: 'ExportVarNamespace'
                     }, {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'js/samples/Statics.ts'
+                        src: 'Statics'
                     }, {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'js/samples/Enumerators.ts'
+                        src: 'Enumerators'
                     }]
             }];
     }

@@ -22,13 +22,97 @@
     <script src="js/CodePanel.js"></script>
     <script src="js/App.js"></script>
 
+    <script type="text/typescript" id="Classes">
+module Ext.sp {
+    export class BaseCls {
+        constructor(config : any){
+                
+        }
 
-    <script type="text/javascript">
-        Ext.onReady(function () {
+        setSomething(config : any){
+     
+        }
+    }
+}
 
-            Ext.create('Ext.ts.emitter.App', { renderTo: Ext.getBody() });
+module Ext.sp {
+    export class ImplementedCls extends sp.BaseCls  {
+        constructor(config : any){
+            super(config);
+        }
+        setSomething(config : any){
+            super.setSomething(config);
+        }
+    }
+}
+    </script>
 
-        });
+
+    <script type="text/typescript" id="Statics">
+ module Ext {
+      export  module util.deep {
+          export class Console {
+ 
+              static log(msg : string){
+          
+                   Console.logInternal('cool');  
+		           this.logInternal('works?');  
+                  this.logAny(Console);
+
+                  this.logAny({
+                     foo : Console
+                  });
+              }
+		      static logInternal(msg : string){
+          
+              }
+              static logAny(msg : any){
+                 Console.logInternal(msg);
+              }
+              static applyOverrides(target : any){
+                //Ext.apply(target);
+            }
+            
+          }
+	      Console.logInternal('wath');      
+
+        
+        }
+    }
+    </script>
+
+<script type="text/typescript" id="ExportVarNamespace">
+        
+module Ext.obscure {
+    export class Yeahh{
+
+    }
+}
+
+module Ext.coolns.yeahh {
+    //Ext.coolns.yeahh isnot defined yet
+    //must emit Ext.ns('Ext.coolns.yeahh').thevar = new Yeahh();
+    export var thevar = new obscure.Yeahh();
+} 
+    </script>
+<script type="text/typescript" id="Enumerators">
+
+module Ext.util.msg{
+    export enum Target {
+        auto   = 0,
+        window = 1,
+        toast  = 2
+    }
+}
+
+    </script>
+
+        <script type="text/javascript">
+            Ext.onReady(function () {
+
+                Ext.create('Ext.ts.emitter.App', { renderTo: Ext.getBody() });
+
+            });
     </script>
 
 </head>

@@ -20,19 +20,16 @@ module Ext.ts.emitter {
                 activeTab: 0,      // First tab active by default
                 items: [{
                     xtype : 'ts.emitter.codepanel',
-                    src   : 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.ts'
-               },{   
-                    xtype : 'ts.emitter.codepanel',
-                    src   : 'js/samples/ExtendDeep.ts'
+                    src   : 'Classes'
                },{  
                     xtype : 'ts.emitter.codepanel',
-                    src   : 'js/samples/ExportVarNamespace.ts'
+                    src   : 'ExportVarNamespace'
                },{  
                     xtype : 'ts.emitter.codepanel',
-                    src   : 'js/samples/Statics.ts'
+                    src   : 'Statics'
                },{  
                     xtype : 'ts.emitter.codepanel',
-                    src   : 'js/samples/Enumerators.ts'
+                    src   : 'Enumerators'
                 }]
             }];
         }

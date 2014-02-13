@@ -1,4 +1,4 @@
-﻿Ext.define('Ext.ts.emitter.CodePanel', {
+Ext.define('Ext.ts.emitter.CodePanel', {
     extend : 'Ext.panel.Panel', 
     xtype : 'ts.emitter.codepanel',
     layout : { type: 'hbox', align: 'stretch' },
@@ -10,16 +10,23 @@
         Ext.ts.emitter.CodePanel.superclass.initComponent.call(this);
     },
     load : function () {
-        var _this = this;
-        Ext.Ajax.request({
-            url: this.src,
-            scope: this,
-            success: function (response) {
-                _this.loadSource(response.responseText);
-            }
-        });
+        var target = Ext.get(this.src);
+
+        if (target) {
+            this.loadSource(target.dom.innerHTML);
+        }
     },
 
+    //github demo problems...
+    //load(){
+    //    Ext.Ajax.request({
+    //        url   : this.src,
+    //        scope : this,
+    //        success : (response : any) => {
+    //            this.loadSource(response.responseText);
+    //        }
+    //    });
+    //}
     loadSource : function (text) {
         var pnlSource = this.getComponent('pnlTypeScript');
 

@@ -18,16 +18,26 @@ module Ext.ts.emitter {
             
         }
         load(){
-        
-            Ext.Ajax.request({
-                url   : this.src,
-                scope : this,
-                success : (response : any) => {
-                    this.loadSource(response.responseText);
-                }
-                    
-            });    
+            var target = Ext.get(this.src);
+
+            if(target){
+                this.loadSource(target.dom.innerHTML);    
+            }
+                
         }
+
+        //github demo problems...
+        //load(){
+        
+        //    Ext.Ajax.request({
+        //        url   : this.src,
+        //        scope : this,
+        //        success : (response : any) => {
+        //            this.loadSource(response.responseText);
+        //        }
+                    
+        //    });    
+        //}
 
         loadSource(text : string){
             var pnlSource = <Ext.form.Field>this.getComponent('pnlTypeScript');
