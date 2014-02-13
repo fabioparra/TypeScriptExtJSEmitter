@@ -1,4 +1,4 @@
-Ext.define('Ext.ts.emitter.App', {
+﻿Ext.define('Ext.ts.emitter.App', {
     extend : 'Ext.container.Viewport', 
     layout : 'border',
     initComponent : function () {
@@ -9,20 +9,18 @@ Ext.define('Ext.ts.emitter.App', {
     buildItems : function () {
         return [
             {
-                region  : 'north',
-                cls     : 'app-header',
-                height  : 70,
-                html    : '<h1 class="app-header-title">TypeScript ExtJS code emitter</h1>',
-                border  : false,
-                margins : '0 0 5 0'
+                region: 'north',
+                html: '<h1 class="x-panel-header">TypeScript ExtJS code emitter</h1>',
+                border: false,
+                margins: '0 0 5 0'
             }, {
-                region    : 'center',
-                xtype     : 'tabpanel',
-                activeTab : 0,
-                items     : [
+                region: 'center',
+                xtype: 'tabpanel',
+                activeTab: 0,
+                items: [
                     {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'js/samples/SuperClass.ts'
+                        src: 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.ts'
                     }, {
                         xtype: 'ts.emitter.codepanel',
                         src: 'js/samples/ExtendDeep.ts'

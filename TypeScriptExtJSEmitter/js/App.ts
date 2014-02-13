@@ -20,8 +20,8 @@ module Ext.ts.emitter {
                 activeTab: 0,      // First tab active by default
                 items: [{
                     xtype : 'ts.emitter.codepanel',
-                    src   : 'js/samples/SuperClass.ts'
-               },{  
+                    src   : 'https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/js/samples/SuperClass.ts'
+               },{   
                     xtype : 'ts.emitter.codepanel',
                     src   : 'js/samples/ExtendDeep.ts'
                },{  
