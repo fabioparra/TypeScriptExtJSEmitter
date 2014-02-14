@@ -2,19 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>TypeScript ExtJS emitter</title>
+    <title>TypeScript ExtJS emitter PlayGround</title>
 
-    
+
     <link href="js/lib/extjs/resources/ext-theme-neptune-all.css" rel="stylesheet" />
     <link href="js/lib/codemirror/lib/codemirror.css" rel="stylesheet" />
-    
-    <script src="js/lib/extjs/ext-all-debug.js"></script>
-    <script src="js/compiler/typescriptServices.js"></script>
+
+
+    <style type="text/css">
+        .app-header .x-panel-body-default {
+            background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#8fc33a),color-stop(100%,#739b2e));
+            background-image: -webkit-linear-gradient(top,#8fc33a,#739b2e);
+            background-image: -moz-linear-gradient(top,#8fc33a,#739b2e);
+            background-image: -o-linear-gradient(top,#8fc33a,#739b2e);
+            background-image: linear-gradient(top,#8fc33a,#739b2e);
+            border-bottom: 1px solid #567422;
+        }
+
+
+        .app-header-title {
+            background: url("js/lib/extjs/resources/images/logo.png") no-repeat scroll 10px 11px transparent;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 10px 10px 31px;
+            text-shadow: 0 1px 0 rgb(78, 105, 31);
+        }
+    </style>
+
+    <script src="js/lib/extjs/ext-all-debug.min.js"></script>
+    <script src="js/compiler/typescriptServices.min.js"></script>
+    <script src="js/compiler/typescriptServices095Original.min.js"></script>
 
     <script src="js/lib/codemirror/lib/codemirror.js"></script>
     <script src="js/lib/codemirror/mode/javascript/javascript.js"></script>
 
-    
+
     <script src="js/ux/codemirror/layout/component/CodeMirror.js"></script>
     <script src="js/ux/codemirror/form/field/codemirror.js"></script>
 
@@ -23,25 +46,27 @@
     <script src="js/App.js"></script>
 
     <script type="text/typescript" id="Classes">
-module Ext.sp {
-    export class BaseCls {
+module Ext.ux.panel {
+    export class BasePanel {
+        customTitle : string;
         constructor(config : any){
-                
+            Ext.apply(this, config);
+            this.setCustomTitle("Cool");
         }
 
-        setSomething(config : any){
-     
+        setCustomTitle(title : string){
+            this.customTitle =  "cool";
         }
     }
 }
 
-module Ext.sp {
-    export class ImplementedCls extends sp.BaseCls  {
+module Ext.ux.panel {
+    export class CustomerPanel extends BasePanel  {
         constructor(config : any){
             super(config);
         }
-        setSomething(config : any){
-            super.setSomething(config);
+        setCustomTitle(title : string){
+            super.setCustomTitle('customer-' + title);
         }
     }
 }
@@ -49,55 +74,57 @@ module Ext.sp {
 
 
     <script type="text/typescript" id="Statics">
- module Ext {
-      export  module util.deep {
-          export class Console {
- 
-              static log(msg : string){
-          
-                   Console.logInternal('cool');  
-		           this.logInternal('works?');  
-                  this.logAny(Console);
+module Ext {
+    export  module util.deep {
+        export class Console {
 
-                  this.logAny({
-                     foo : Console
-                  });
-              }
-		      static logInternal(msg : string){
-          
-              }
-              static logAny(msg : any){
-                 Console.logInternal(msg);
-              }
-              static applyOverrides(target : any){
-                //Ext.apply(target);
+            static log(msg : string){
+
+                Console.logInternal('cool');
+                this.logInternal('works?');
+                this.logAny(Console);
+
+                this.logAny({
+                foo : Console
+                });
             }
-            
-          }
-	      Console.logInternal('wath');      
+            static logInternal(msg : string){
 
-        
+            }
+            static logAny(msg : any){
+            Console.logInternal(msg);
+            }
+            static applyOverrides(target : any){
+            //Ext.apply(target);
         }
-    }
-    </script>
 
-<script type="text/typescript" id="ExportVarNamespace">
-        
-module Ext.obscure {
-    export class Yeahh{
+        }
+        Console.logInternal('ExtJS');
+
 
     }
 }
-
-module Ext.coolns.yeahh {
-    //Ext.coolns.yeahh isnot defined yet
-    //must emit Ext.ns('Ext.coolns.yeahh').thevar = new Yeahh();
-    export var thevar = new obscure.Yeahh();
-} 
     </script>
-<script type="text/typescript" id="Enumerators">
 
-module Ext.util.msg{
+    <script type="text/typescript" id="ExportVarNamespace">
+
+module Ext.ux.core {
+    export class SvgEngine{
+        render(content : string){
+            var svgText = content;
+        }
+    }
+}
+
+module Ext.ux.ui.svg {
+    //Ext.ux.ui.svg isnot defined yet
+    //must emit Ext.ns('Ext.ux.ui.svg').thevar = new Ext.ux.core.SvgEngine();
+    export var engine = new core.SvgEngine();
+}
+    </script>
+    <script type="text/typescript" id="Enums">
+
+module Ext.ux.util.msg {
     export enum Target {
         auto   = 0,
         window = 1,
@@ -107,12 +134,93 @@ module Ext.util.msg{
 
     </script>
 
+    <script type="text/typescript" id="Javascript">
+
+function Greeter(greeting) {
+    this.greeting = greeting;
+}
+
+Greeter.prototype.greet = function() {
+    return "Hello, " + this.greeting;
+}
+
+var greeter = new Greeter({message: "world"});
+
+var button = document.createElement('button');
+button.textContent = "Say Hello";
+button.onclick = function() {
+    alert(greeter.greet());
+};
+
+document.body.appendChild(button);
+
+
+    </script>
+    
+
+
+
+    <script type="text/typescript" id="Generics">
+class Greeter<T> {
+    greeting: T;
+    constructor(message: T) {
+        this.greeting = message;
+    }
+    greet() {
+        return this.greeting;
+    }
+}
+
+var greeter = new Greeter<string>("Hello, world");
+
+var button = document.createElement('button');
+button.textContent = "Say Hello";
+button.onclick = function () {
+    alert(greeter.greet());
+}
+
+document.body.appendChild(button);
+
+    </script>
+
+    <script type="text/typescript" id="SimpleInheritance">
+class Animal {
+    constructor(public name: string) { }
+    move(meters: number) {
+        alert(this.name + " moved " + meters + "m.");
+    }
+}
+
+class Snake extends Animal {
+    constructor(name: string) { super(name); }
+    move() {
+        alert("Slithering...");
+        super.move(5);
+    }
+}
+
+class Horse extends Animal {
+    constructor(name: string) { super(name); }
+    move() {
+        alert("Galloping...");
+        super.move(45);
+    }
+}
+
+var sam = new Snake("Sammy the Python");
+var tom: Animal = new Horse("Tommy the Palomino");
+
+sam.move();
+tom.move(34);
+        
+
+    </script>
         <script type="text/javascript">
-            Ext.onReady(function () {
+        Ext.onReady(function () {
 
-                Ext.create('Ext.ts.emitter.App', { renderTo: Ext.getBody() });
+            Ext.create('Ext.ts.emitter.App', { renderTo: Ext.getBody() });
 
-            });
+        });
     </script>
 
 </head>

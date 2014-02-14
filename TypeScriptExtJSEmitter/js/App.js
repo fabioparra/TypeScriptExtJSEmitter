@@ -17,7 +17,7 @@ Ext.define('Ext.ts.emitter.App', {
             }, {
                 region: 'center',
                 xtype: 'tabpanel',
-                activeTab: 0, 
+                activeTab: 0,
                 items: [
                     {
                         xtype: 'ts.emitter.codepanel',
@@ -30,7 +30,16 @@ Ext.define('Ext.ts.emitter.App', {
                         src: 'Statics'
                     }, {
                         xtype: 'ts.emitter.codepanel',
-                        src: 'Enumerators'
+                        src: 'Enums'
+                    }, {
+                        xtype: 'ts.emitter.codepanel',
+                        src: 'Javascript'
+                    }, {
+                        xtype: 'ts.emitter.codepanel',
+                        src: 'Generics'
+                    }, {
+                        xtype: 'ts.emitter.codepanel',
+                        src: 'SimpleInheritance'
                     }]
             }];
     }

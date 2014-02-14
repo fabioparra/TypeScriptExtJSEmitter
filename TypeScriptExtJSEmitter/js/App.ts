@@ -30,7 +30,16 @@ module Ext.ts.emitter {
                     src   : 'Statics'
                },{  
                     xtype : 'ts.emitter.codepanel',
-                    src   : 'Enumerators'
+                    src   : 'Enums'
+               },{  
+                    xtype : 'ts.emitter.codepanel',
+                    src   : 'Javascript'
+               },{  
+                    xtype : 'ts.emitter.codepanel',
+                    src   : 'Generics'
+               },{  
+                    xtype : 'ts.emitter.codepanel',
+                    src   : 'SimpleInheritance'
                 }]
             }];
         }

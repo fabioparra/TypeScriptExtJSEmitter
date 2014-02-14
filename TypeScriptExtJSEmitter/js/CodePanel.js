@@ -1,7 +1,15 @@
-Ext.define('Ext.ts.emitter.CodePanel', {
+﻿Ext.define('Ext.ts.emitter.CodePanel', {
     extend : 'Ext.panel.Panel', 
     xtype : 'ts.emitter.codepanel',
     layout : { type: 'hbox', align: 'stretch' },
+    defaults : {
+        xtype: 'codemirror',
+        flex: 0.5,
+        pathModes: 'js/lib/codemirror/mode',
+        pathExtensions: 'js/lib/codemirror/lib/util',
+        mode: 'application/typescript',
+        showModes: false
+    },
     initComponent : function () {
         this.tbar = this.builTbar();
         this.items = this.buildItems();
@@ -28,21 +36,29 @@ Ext.define('Ext.ts.emitter.CodePanel', {
     //    });
     //}
     loadSource : function (text) {
-        var pnlSource = this.getComponent('pnlTypeScript');
+        var pnlSource = this.getComponent('pnlTS');
 
         pnlSource.setValue(text);
 
-        this.compileSource();
+        this.compileSources();
     },
-    compileSource : function () {
-        var compiler = new TypeScript.TypeScriptCompiler();
-        var pnlTypeScript = this.getComponent('pnlTypeScript');
-        var pnlJavascript = this.getComponent('pnlJavascript');
-        var content = pnlTypeScript.getValue();
+    compileSources : function () {
+        var pnlTS = this.getComponent('pnlTS');
+        var pnlJS = this.getComponent('pnlJS');
+        var pnlJSOrig = this.getComponent('pnlJSOrig');
+        var content = pnlTS.getValue();
+        var extjsOutput = this.compileSource(TypeScript.TypeScriptCompiler, TypeScript, content);
+        var defOutput = this.compileSource(TypeScriptOriginal.TypeScriptCompiler, TypeScriptOriginal, content);
+
+        pnlJS.setValue(extjsOutput);
+        pnlJSOrig.setValue(defOutput);
+    },
+    compileSource : function (CompilerClass, ns, content) {
         var output = '';
         var current;
+        var compiler = new CompilerClass();
 
-        this.addFile(compiler, this.title, content);
+        this.addFile(compiler, ns, this.title, content);
 
         var iter = compiler.compile();
 
@@ -51,36 +67,28 @@ Ext.define('Ext.ts.emitter.CodePanel', {
             output += !!current ? current.text : '';
         }
 
-        pnlJavascript.setValue(output);
+        return output;
     },
-    addFile : function (compiler, fileName, fileContent) {
-        var snapshot = TypeScript.ScriptSnapshot.fromString(fileContent);
+    addFile : function (compiler, ns, fileName, fileContent) {
+        var snapshot = ns.ScriptSnapshot.fromString(fileContent);
         compiler.addFile(fileName, snapshot);
     },
 
     buildItems : function () {
         return [
             {
-                xtype: 'codemirror',
-                itemId: 'pnlTypeScript',
-                region: 'west',
-                flex: 0.5,
-                pathModes: 'js/lib/codemirror/mode',
-                pathExtensions: 'js/lib/codemirror/lib/util',
-                mode: 'application/typescript',
-                showModes: false,
+                itemId: 'pnlTS',
+                toolbarTitle: 'TypeScript',
                 listeners: {
                     scope: this,
                     initialize: this.load
                 }
             }, {
-                xtype: 'codemirror',
-                itemId: 'pnlJavascript',
-                flex: 0.5,
-                pathModes: 'js/lib/codemirror/mode',
-                pathExtensions: 'js/lib/codemirror/lib/util',
-                mode: 'text/javascript',
-                showModes: false
+                itemId: 'pnlJS',
+                toolbarTitle: 'ExtJS Javascript'
+            }, {
+                itemId: 'pnlJSOrig',
+                toolbarTitle: 'Original Javascript'
             }];
     },
     builTbar : function () {
@@ -88,7 +96,7 @@ Ext.define('Ext.ts.emitter.CodePanel', {
                 xtype: 'button',
                 text: 'Compile typescript',
                 scope: this,
-                handler: this.compileSource
+                handler: this.compileSources
             }];
     }
     

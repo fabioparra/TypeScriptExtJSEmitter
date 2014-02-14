@@ -1,4 +1,5 @@
 declare var TypeScript : any;
+declare var TypeScriptOriginal : any;
  
 module Ext.ts.emitter {
     
@@ -8,6 +9,14 @@ module Ext.ts.emitter {
         title  : string;
         src    : string;
 
+        defaults = {
+            xtype          : 'codemirror',
+            flex           : 0.5,
+            pathModes      : 'js/lib/codemirror/mode',
+            pathExtensions : 'js/lib/codemirror/lib/util',
+            mode           : 'application/typescript',
+            showModes      : false
+        }
 
         initComponent() : void {
             this.tbar  = this.builTbar();
@@ -40,22 +49,31 @@ module Ext.ts.emitter {
         //}
 
         loadSource(text : string){
-            var pnlSource = <Ext.form.Field>this.getComponent('pnlTypeScript');
+            var pnlSource = <Ext.form.Field>this.getComponent('pnlTS');
             
             pnlSource.setValue(text);
             
             
-            this.compileSource();    
+            this.compileSources();    
         }
-        compileSource(){
-            var compiler      = new TypeScript.TypeScriptCompiler();
-            var pnlTypeScript = <Ext.form.Field>this.getComponent('pnlTypeScript');
-            var pnlJavascript = <Ext.form.Field>this.getComponent('pnlJavascript');
-            var content       = pnlTypeScript.getValue();
-            var output        = '';
-            var current       : any;
+        compileSources(){
+            var pnlTS        = <Ext.form.Field>this.getComponent('pnlTS');
+            var pnlJS        = <Ext.form.Field>this.getComponent('pnlJS');
+            var pnlJSOrig    = <Ext.form.Field>this.getComponent('pnlJSOrig');
+            var content      = pnlTS.getValue();
+            var extjsOutput  = this.compileSource(TypeScript.TypeScriptCompiler, TypeScript, content);
+            var defOutput    = this.compileSource(TypeScriptOriginal.TypeScriptCompiler, TypeScriptOriginal, content);
 
-            this.addFile(compiler, this.title, content);
+            pnlJS.setValue(extjsOutput); 
+            pnlJSOrig.setValue(defOutput); 
+        }
+        compileSource(CompilerClass : any, ns : any, content : string) : string{
+            var output   = '';
+            var current  : any;
+            var compiler : any = new CompilerClass();
+
+
+            this.addFile(compiler, ns, this.title, content);
 
             var iter = compiler.compile();
             
@@ -64,35 +82,27 @@ module Ext.ts.emitter {
                 output += !!current ? current.text : '';
             }
 
-            pnlJavascript.setValue(output);
+            return output;
         }
-        addFile = function(compiler : any, fileName : string, fileContent : string){
-            var snapshot = TypeScript.ScriptSnapshot.fromString(fileContent);
+        addFile = function(compiler : any, ns : any,  fileName : string, fileContent : string){
+            var snapshot = ns.ScriptSnapshot.fromString(fileContent);
             compiler.addFile(fileName, snapshot);
         }
         buildItems(){
             return [{
-                xtype          : 'codemirror',
-                itemId         : 'pnlTypeScript',
-                region         : 'west',
-                flex           : 0.5,
-                pathModes      : 'js/lib/codemirror/mode',
-                pathExtensions : 'js/lib/codemirror/lib/util',
-                mode           : 'application/typescript',
-                showModes      : false,
+                itemId         : 'pnlTS',
+                toolbarTitle   : 'TypeScript',
                 listeners      : {
                     scope      : this,
                     initialize : this.load
                         
                 }
             },{
-                xtype          : 'codemirror',
-                itemId         : 'pnlJavascript',
-                flex           : 0.5,
-                pathModes      : 'js/lib/codemirror/mode',
-                pathExtensions : 'js/lib/codemirror/lib/util',
-                mode           : 'text/javascript',
-                showModes      : false
+                itemId         : 'pnlJS',
+                toolbarTitle   : 'ExtJS Javascript',
+            },{
+                itemId         : 'pnlJSOrig',
+                toolbarTitle   : 'Original Javascript',
             }];
         }
         builTbar(){
@@ -100,7 +110,7 @@ module Ext.ts.emitter {
                   xtype   : 'button', 
                   text    : 'Compile typescript',
                   scope   : this,
-                  handler : this.compileSource
+                  handler : this.compileSources
 
             }];
         }

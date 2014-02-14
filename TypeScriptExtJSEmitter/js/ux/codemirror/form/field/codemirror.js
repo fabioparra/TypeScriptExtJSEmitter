@@ -168,6 +168,7 @@ Ext.define('Ext.ux.form.field.CodeMirror', {
     * @cfg {Boolean} showLineNumbers Enable line numbers button in the toolbar.
     */
     showLineNumbers:    true,
+    toolbarTitle : null,
 
     /**
     * @cfg {Boolean} enableMatchBrackets Force matching-bracket-highlighting to happen 
@@ -690,6 +691,11 @@ Ext.define('Ext.ux.form.field.CodeMirror', {
         // line numbers button
         if(me.showLineNumbers)
             items.push(btn('insertorderedlist'));
+
+        if(me.toolbarTitle){
+            items.push({xtype : 'tbtext', text : me.toolbarTitle});
+        }
+
         
         me.toolbar = Ext.create('Ext.toolbar.Toolbar', {
             id:                 me.id + '-toolbar',
