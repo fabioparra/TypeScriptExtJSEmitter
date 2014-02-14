@@ -17,6 +17,7 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="images\screenshot.jpg" />
     <Content Include="js\App.js" />
     <Content Include="js\CodePanel.js" />
     <Content Include="js\compiler\tsc.js" />
