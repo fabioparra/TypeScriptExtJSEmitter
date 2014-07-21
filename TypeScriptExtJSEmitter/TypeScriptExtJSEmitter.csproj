@@ -10,7 +10,7 @@
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <TypeScriptToolsVersion>0.9</TypeScriptToolsVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -27,10 +27,7 @@
     <Content Include="js\compiler\typescriptServices.min.js">
       <DependentUpon>typescriptServices.js</DependentUpon>
     </Content>
-    <Content Include="js\compiler\typescriptServices095Original.js" />
-    <Content Include="js\compiler\typescriptServices095Original.min.js">
-      <DependentUpon>typescriptServices095Original.js</DependentUpon>
-    </Content>
+    <Content Include="js\compiler\typescriptServices095Original.min.js" />
     <Content Include="js\lib\codemirror\lib\codemirror.css" />
     <Content Include="js\lib\codemirror\lib\codemirror.js" />
     <Content Include="js\lib\codemirror\lib\overlay.js" />
@@ -532,7 +529,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51765/</IISUrl>
+          <IISUrl>http://localhost/TypeScriptExtJSEmitter</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
