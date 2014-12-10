@@ -8,6 +8,9 @@ A fork of typescript 1.0.3 to emit code in Ext JS class style
 TypeScript emit code in a particular style and get really ugly when you have deep module names and class inheritance.
 ExtJS, on other hand, has a nice class system style, so why not mix both?
 
+#Definitions
+You can use dretchs's ExtJS 4 definitions  https://github.com/Dretch/typescript-declarations-for-ext
+
 #Screenshot
 ![ScreenShot](https://raw2.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/images/screenshot.jpg)
 
