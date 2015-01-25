@@ -1,8 +1,12 @@
-module Ext.ts.emitter {
+/// <reference path="ExtJS-4.2.0.663.d.ts"/>
+/// <reference path="CodePanel.ts"/>
+
+module Demo.ts.emitter {
     
     export class App extends Ext.container.Viewport {
     
         layout = 'border';
+
         initComponent() : void {
             this.items = this.buildItems();
             super.initComponent();

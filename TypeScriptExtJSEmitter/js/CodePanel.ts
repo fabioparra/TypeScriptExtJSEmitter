@@ -1,7 +1,9 @@
+/// <reference path="ExtJS-4.2.0.663.d.ts"/>
+
 declare var TypeScript : any;
 declare var TypeScriptOriginal : any;
  
-module Ext.ts.emitter {
+module Demo.ts.emitter {
     
     export class CodePanel extends Ext.panel.Panel {
         xtype  = 'ts.emitter.codepanel' ;
@@ -16,16 +18,16 @@ module Ext.ts.emitter {
             pathExtensions : 'js/lib/codemirror/lib/util',
             mode           : 'application/typescript',
             showModes      : false
-        }
+        };
 
         initComponent() : void {
             this.tbar  = this.builTbar();
             this.items = this.buildItems();
-            this.title = this.src.replace(/.*\/|\/..*$/g, ''); 
+            this.title = this.src.replace(/.*\/|\/..*$/g, '');
 
             super.initComponent();
-            
         }
+
         load(){
             var target = Ext.get(this.src);
 
@@ -49,17 +51,16 @@ module Ext.ts.emitter {
         //}
 
         loadSource(text : string){
-            var pnlSource = <Ext.form.Field>this.getComponent('pnlTS');
-            
+            var pnlSource = <Ext.form.field.Base>this.getComponent('pnlTS');
             pnlSource.setValue(text);
-            
-            
-            this.compileSources();    
+
+            this.compileSources();
         }
+
         compileSources(){
-            var pnlTS        = <Ext.form.Field>this.getComponent('pnlTS');
-            var pnlJS        = <Ext.form.Field>this.getComponent('pnlJS');
-            var pnlJSOrig    = <Ext.form.Field>this.getComponent('pnlJSOrig');
+            var pnlTS        = <Ext.form.field.Base>this.getComponent('pnlTS');
+            var pnlJS        = <Ext.form.field.Base>this.getComponent('pnlJS');
+            var pnlJSOrig    = <Ext.form.field.Base>this.getComponent('pnlJSOrig');
             var content      = pnlTS.getValue();
             var extjsOutput  = this.compileSource(TypeScript.TypeScriptCompiler, TypeScript, content);
             var defOutput    = this.compileSource(TypeScriptOriginal.TypeScriptCompiler, TypeScriptOriginal, content);
@@ -67,6 +68,7 @@ module Ext.ts.emitter {
             pnlJS.setValue(extjsOutput); 
             pnlJSOrig.setValue(defOutput); 
         }
+
         compileSource(CompilerClass : any, ns : any, content : string) : string{
             var output   = '';
             var current  : any;
@@ -84,10 +86,12 @@ module Ext.ts.emitter {
 
             return output;
         }
+
         addFile = function(compiler : any, ns : any,  fileName : string, fileContent : string){
             var snapshot = ns.ScriptSnapshot.fromString(fileContent);
             compiler.addFile(fileName, snapshot);
-        }
+        };
+
         buildItems(){
             return [{
                 itemId         : 'pnlTS',
@@ -99,12 +103,13 @@ module Ext.ts.emitter {
                 }
             },{
                 itemId         : 'pnlJS',
-                toolbarTitle   : 'ExtJS Javascript',
+                toolbarTitle   : 'ExtJS Javascript'
             },{
                 itemId         : 'pnlJSOrig',
-                toolbarTitle   : 'Original Javascript',
+                toolbarTitle   : 'Original Javascript'
             }];
         }
+
         builTbar(){
             return [{
                   xtype   : 'button', 
@@ -114,7 +119,5 @@ module Ext.ts.emitter {
 
             }];
         }
-    
     }
-    
 } 
