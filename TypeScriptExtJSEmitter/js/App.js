@@ -1,9 +1,11 @@
-Ext.define('Ext.ts.emitter.App', {
+/// <reference path="ExtJS-4.2.0.663.d.ts"/>
+/// <reference path="CodePanel.ts"/>
+Ext.define('Demo.ts.emitter.App', {
     extend : 'Ext.container.Viewport', 
     layout : 'border',
     initComponent : function () {
         this.items = this.buildItems();
-        Ext.ts.emitter.App.superclass.initComponent.call(this);
+        Demo.ts.emitter.App.superclass.initComponent.call(this);
     },
 
     buildItems : function () {

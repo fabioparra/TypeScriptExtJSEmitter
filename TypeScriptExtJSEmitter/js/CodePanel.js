@@ -1,4 +1,6 @@
-﻿Ext.define('Ext.ts.emitter.CodePanel', {
+/// <reference path="ExtJS-4.2.0.663.d.ts"/>
+
+Ext.define('Demo.ts.emitter.CodePanel', {
     extend : 'Ext.panel.Panel', 
     xtype : 'ts.emitter.codepanel',
     layout : { type: 'hbox', align: 'stretch' },
@@ -15,8 +17,9 @@
         this.items = this.buildItems();
         this.title = this.src.replace(/.*\/|\/..*$/g, '');
 
-        Ext.ts.emitter.CodePanel.superclass.initComponent.call(this);
+        Demo.ts.emitter.CodePanel.superclass.initComponent.call(this);
     },
+
     load : function () {
         var target = Ext.get(this.src);
 
@@ -37,11 +40,11 @@
     //}
     loadSource : function (text) {
         var pnlSource = this.getComponent('pnlTS');
-
         pnlSource.setValue(text);
 
         this.compileSources();
     },
+
     compileSources : function () {
         var pnlTS = this.getComponent('pnlTS');
         var pnlJS = this.getComponent('pnlJS');
@@ -53,6 +56,7 @@
         pnlJS.setValue(extjsOutput);
         pnlJSOrig.setValue(defOutput);
     },
+
     compileSource : function (CompilerClass, ns, content) {
         var output = '';
         var current;
@@ -91,6 +95,7 @@
                 toolbarTitle: 'Original Javascript'
             }];
     },
+
     builTbar : function () {
         return [{
                 xtype: 'button',
