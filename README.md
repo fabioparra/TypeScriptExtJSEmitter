@@ -1,25 +1,30 @@
-TypeScript ExtJS Code Emitter
+TypeScript ExtJS Emitter
 ======================
 
-A fork of typescript 1.0.3 to emit code in Ext JS class style
+A fork of Typescript 1.0.3 that emits classes in a way that ExtJS understands.
 
-#Why?
+##Why?
 
-TypeScript emit code in a particular style and get really ugly when you have deep module names and class inheritance.
-ExtJS, on other hand, has a nice class system style, so why not mix both?
+The Javascript emitted by the Typescript compiler is not compatible with the ExtJS class system. ExtJS requires classes to be defined using syntax like `Ext.define(CLASSNAME, MEMBERS);` but Typescript emits code based around prototypes.
 
-#Definitions
-You can use dretchs's ExtJS 4 definitions  https://github.com/Dretch/typescript-declarations-for-ext
+This forked compiler emits code that looks just like the ExtJS classes you would write in regular Javascript.
 
-#Screenshot
-![ScreenShot](https://raw2.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/images/screenshot.jpg)
+##ExtJS API Type Declarations
 
+To get the most use out of this compiler you will also need some type declarations (*.d.ts files) for the ExtJS API. There is a companion project to provide these: https://github.com/Dretch/typescript-declarations-for-ext
 
-#Demo
+##Screenshot
+![ScreenShot](https://raw.github.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/images/screenshot.jpg)
+
+##Demo
 
 https://rawgithub.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEmitter/index.html
 
-#Usage with Visual Studio
+##Compatability
+
+This project is compatible with Typescript 1.0.3 and ExtJS 4 and 5. The emitted classes can be processed by Sencha CMD. Typescript 1.4 support is planned.
+
+##Usage with Visual Studio
 
 ####Update tsc.js and lib.d.ts files (eg: visual studio build task)
 
@@ -35,7 +40,7 @@ visual studio folder (vary by version) C:\Program Files (x86)\Microsoft Visual S
 https://github.com/fabioparra/TypeScriptExtJSEmitter/blob/master/TypeScriptExtJSEmitter/js/compiler/typescriptServices.js
 https://github.com/fabioparra/TypeScriptExtJSEmitter/blob/master/TypeScriptExtJSEmitter/js/compiler/lib.d.ts
 
-#Usage with IntelliJ IDEA
+##Usage with IntelliJ IDEA
 
 IntelliJ IDEA 14 (Ultimate Edition only) has Typescript support. The ExtJS emitter can be used instead of the regular compiler.
 
@@ -51,7 +56,7 @@ Follow the instructions for setting up regular Typescript support (https://www.j
 
     *    `lib.d.ts` with https://github.com/fabioparra/TypeScriptExtJSEmitter/raw/master/TypeScriptExtJSEmitter/js/compiler/lib.d.ts
 
-#Source Code
+##Source Code
 
 https://typescript.codeplex.com/SourceControl/network/forks/fabioparra/ExtJSEmitter
 
