@@ -3,6 +3,8 @@ TypeScript ExtJS Emitter
 
 A fork of Typescript 1.0.3 that emits classes in a way that ExtJS understands.
 
+#####There is a new project  with TypeScript 1.4 support: https://github.com/fabioparra/TypeScript
+
 ##Why?
 
 The Javascript emitted by the Typescript compiler is not compatible with the ExtJS class system. ExtJS requires classes to be defined using syntax like `Ext.define(CLASSNAME, MEMBERS);` but Typescript emits code based around prototypes.
@@ -22,7 +24,7 @@ https://rawgithub.com/fabioparra/TypeScriptExtJSEmitter/master/TypeScriptExtJSEm
 
 ##Compatability
 
-This project is compatible with Typescript 1.0.3 and ExtJS 4 and 5. The emitted classes can be processed by Sencha CMD. Typescript 1.4 support is planned.
+This project is compatible with Typescript 1.0.3 and ExtJS 4 and 5. The emitted classes can be processed by Sencha CMD.
 
 ##Usage with Visual Studio
 
